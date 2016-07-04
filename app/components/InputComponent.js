@@ -97,7 +97,21 @@ export default class InputComponent extends React.Component {
   }
 
   render() {
-  	console.log(this.props.style);
+  	// console.log(this.props.style);
+  	var styles = this.props.style;
+  	var obj = {};
+  	if(styles && styles.length>0){
+  		var data = styles.split(';');
+	  	
+	  	data.map(function(item){
+	  		var q = item.split(':');
+	  		if(q.length==2){
+	  			obj[q[0]] = q[1];
+	  		} 
+	  	});
+  	}
+  	
+
     return (
     	<input 
 	    	onBlur={this.blured} 
@@ -109,9 +123,9 @@ export default class InputComponent extends React.Component {
 	    	placeholder={this.props.placeholder}
 	    	maxLength={this.props.maxlength}
 	    	onChange={this.handleChange}
-	    	// style={this.props.style}
+	    	// style={display:'block',width:'100%'}
+	    	style={obj}
 	    	className={this.props.class}
-    	/>
-    	);
+    />);
   }
 }

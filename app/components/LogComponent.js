@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import styles from './css/toast.css';
 // console.log(styles);
 
-class LogComponent extends React.Component {
+export default class LogComponent extends React.Component {
   constructor() {
     super();
     this.state = {};
@@ -61,8 +61,3 @@ class LogComponent extends React.Component {
       );
   }
 }
-
-export default ReactDOM.render(
-  <LogComponent msg="输入Log"/>,
-  document.getElementById('toast')
-);

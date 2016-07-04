@@ -11,6 +11,11 @@
 + "style-loader": "^0.12.1",
 
 
+####循环子组件
+><option className={self.props.optionClass} value={d} key={i}>{d}</option>
++ 注意此需要key,不然会报错
+> Warning: Each child in an array or iterator should have a unique "key" prop. 
+
 ####非父子组件间的通讯
 
 
