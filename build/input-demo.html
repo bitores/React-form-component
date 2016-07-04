@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Input-Demo</title>
+</head>
+<body>
+	<select name="type" onchange="">
+		<option value='text' selected>单行文本(text)</option>
+		<option value='textarea'>多行文本(textarea)</option>
+		<option value='select'>下拉框(select)</option>
+		<option value='radio'>单选框(radio)</option>
+		<option value='checkbox'>多选框(checkbox)</option>
+		<option value='password'>密码框(password)</option>
+		<option value='hidden'>隐藏域(hidden)</option>
+	</select>
+	<textarea name='defaultvalue' rows='1' cols='50' onkeypress=""></textarea>
+	<textarea name='options' cols='40' rows='5' id='options'></textarea>
+	<input type="hidden" name="fid" value="<?=$fid?>">
+	<input type="text" name="orderid" value="255">
+	是<input type="radio" name="ismust" value="1"/> 
+	否<input type="radio" name="ismust" value="0" checked/>
+	<input type="submit" name="submit" value=" 确定 "/>
+	<input type="reset" name="reset" value=" 清除 "/>
+</body>
+</html>
