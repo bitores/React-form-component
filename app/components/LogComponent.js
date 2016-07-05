@@ -4,7 +4,7 @@ import styles from './css/toast.css';
 // console.log(styles);
 
 export default class LogComponent extends React.Component {
-  constructor() {
+  constructor=(e)=>{
     super();
     this.state = {};
 

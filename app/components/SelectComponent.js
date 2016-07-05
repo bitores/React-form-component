@@ -1,5 +1,7 @@
 import React from 'react';
-export default class SelectComponent extends React.Component {
+import BaseComponent from './BaseComponent';
+
+export default class SelectComponent extends BaseComponent {
   constructor() {
     super();
     this.state = {};

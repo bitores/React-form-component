@@ -1,8 +1,8 @@
 import React from 'react';
+import BaseComponent from './BaseComponent';
 
-
-export default class InputComponent extends React.Component {
-  constructor() {
+export default class InputComponent extends BaseComponent {
+  constructor(){
     super();
     var scope = this;
     this.state = {};
@@ -27,16 +27,12 @@ export default class InputComponent extends React.Component {
 		URL:"^http[s]?://[\\w\\.\\-]+$"
 	};
 
-    this.match = this.match.bind(this);
+    // this.match = this.match.bind(this);
     this.blured = this.blured.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  log(msg){
-  	this.props.log.show(msg);
-  }
-
-  match(para) {
+  match (para) {
 	var flag=false;
 	if(para.rule=='OTHER') {
 		//自定义的验证规则匹配
@@ -83,7 +79,10 @@ export default class InputComponent extends React.Component {
 
 	//如果验证没有通过，显示tips
 	if(!flag) {
-		this.log(this.props.error);
+		if(!!this.props.value == true)
+			this.log(this.props.error);
+		else
+			this.log(this.props.placeholder);
 	}
 
   }
@@ -97,35 +96,25 @@ export default class InputComponent extends React.Component {
   }
 
   render() {
-  	// console.log(this.props.style);
-  	var styles = this.props.style;
-  	var obj = {};
-  	if(styles && styles.length>0){
-  		var data = styles.split(';');
-	  	
-	  	data.map(function(item){
-	  		var q = item.split(':');
-	  		if(q.length==2){
-	  			obj[q[0]] = q[1];
-	  		} 
-	  	});
-  	}
+  	var scope = this.props;
+  	var styles = scope.style;
+  	
   	
 
     return (
     	<input 
 	    	onBlur={this.blured} 
 
-	    	type={this.props.type}
-	    	name={this.props.name}
-	    	defaultValue={this.props.value}
-	    	defaultChecked={this.props.checked}
-	    	placeholder={this.props.placeholder}
-	    	maxLength={this.props.maxlength}
+	    	type={scope.type}
+	    	name={scope.name}
+	    	defaultValue={scope.value}
+	    	defaultChecked={scope.checked}
+	    	placeholder={scope.placeholder}
+	    	maxLength={scope.maxlength}
 	    	onChange={this.handleChange}
-	    	// style={display:'block',width:'100%'}
-	    	style={obj}
-	    	className={this.props.class}
+	    	// style={{display:'block',width:'100%'}}
+	    	style={this.toStyle(styles)}
+	    	className={scope.class}
     />);
   }
 }
